@@ -7,12 +7,31 @@ to install vagrant, virtual box and run:
 
 $ vagrant up
 
-in the vm-ubuntu-20.04/ directory.  I like to change
-some things in the Vagrantfile:
+in the vm-ubuntu-20.04/ directory.  A guest OS gui
+should appear at the end.  Login with:
 
-1. By default, Vagrant mounts the directory containing
+User: p4
+PW: p4
+
+I like to change some things in the Vagrantfile:
+
+1.  By default, Vagrant mounts the directory containing
 the Vagrantfile to /vagrant/ directory inside the guest
 VM.  However, P4 tutorials disable this in their
-Vagrantfile.  So re-enable it by commenting the line:
+Vagrantfile.  Re-enable mounting and point to root of
+'tutorial_jmt' repo'.  Change the line inside
+'./vm-ubuntu-20.04/Vagrantfile' from:
 
-#   config.vm.synced_folder '.', '/vagrant', disabled: true
+    config.vm.synced_folder '.', '/vagrant', disabled: true
+
+to:
+
+    config.vm.synced_folder './..', '/vagrant', disabled: false
+
+Inside the guest OS, if you 'cd' to:
+
+$ cd /vagrant/
+
+You should see the 'exercises/' directory.
+
+
