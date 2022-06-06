@@ -34,4 +34,6 @@ $ cd /vagrant/
 
 You should see the 'exercises/' directory.
 
-
+2.  If you try to edit files inside the the guest OS, you get
+'Permission denied'.  So do the file editing on the host machine,
+and run the binaries/commands in the guest machine.
