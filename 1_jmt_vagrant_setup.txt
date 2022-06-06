@@ -1,0 +1,18 @@
+########################
+### Vagrant VM Setup ###
+########################
+
+Follow the instructions in the official README.md
+to install vagrant, virtual box and run:
+
+$ vagrant up
+
+in the vm-ubuntu-20.04/ directory.  I like to change
+some things in the Vagrantfile:
+
+1. By default, Vagrant mounts the directory containing
+the Vagrantfile to /vagrant/ directory inside the guest
+VM.  However, P4 tutorials disable this in their
+Vagrantfile.  So re-enable it by commenting the line:
+
+#   config.vm.synced_folder '.', '/vagrant', disabled: true
