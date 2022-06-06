@@ -1,5 +1,6 @@
 
-
+Tutorial slides:
+https://docs.google.com/presentation/d/1zliBqsS8IOD4nQUboRRmF_19poeLLDLadD5zLzrTkVc/edit#slide=id.g37fca2850e_6_2090
 
 Useful blog:
 https://opennetworking.org/news-and-events/blog/getting-started-with-p4/
