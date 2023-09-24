@@ -7,8 +7,13 @@ to install vagrant, virtual box and run:
 
 $ vagrant up
 
-in the vm-ubuntu-20.04/ directory.  A guest OS gui
-should appear at the end.  Login with:
+in the vm-ubuntu-20.04/ directory.  Virtual box requires
+AMD-V enable to make sure you enable it in BIOS:
+
+[BIOS splash screen] -> [press F2] -> [MIT settings] ->
+[Frequency Settings] -> [CPU Settings] -> [SVM Mode] -> Enable
+
+A guest OS gui should appear at the end.  Login with:
 
 User: p4
 PW: p4
