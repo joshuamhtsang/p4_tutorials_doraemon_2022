@@ -33,6 +33,10 @@ header ipv4_t {
     ip4Addr_t dstAddr;
 }
 
+header dstl_t {
+    bit<8>    hello;
+}
+
 struct metadata {
     /* empty */
 }
@@ -40,6 +44,7 @@ struct metadata {
 struct headers {
     ethernet_t   ethernet;
     ipv4_t       ipv4;
+    dstl_t       dstl;
 }
 
 /*************************************************************************
@@ -163,6 +168,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
         packet.emit(hdr.ipv4);
+        packet.emit(hdr.dstl);
     }
 }
 
