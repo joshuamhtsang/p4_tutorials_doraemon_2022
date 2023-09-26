@@ -110,6 +110,10 @@ control MyIngress(inout headers hdr,
         default_action = drop();
     }
 
+    /* Every control block has an apply{} block, which applies a 
+    <table> to the packets.  Tables also have the apply() method,
+    so don't confuse the two! */
+
     apply {
         if (hdr.ipv4.isValid()) {
             ipv4_lpm.apply();

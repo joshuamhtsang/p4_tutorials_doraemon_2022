@@ -34,6 +34,16 @@ $ sudo make clean
 
 
 
+#################
+### Wireshark ###
+#################
+
+You can run Wireshark packet capture in the VM. In the terminal do:
+
+$ sudo wireshark
+
+Each of the switches sX in mininet will be a NIC in wireshark's 
+interface list.
 
 
 
