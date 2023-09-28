@@ -1,0 +1,27 @@
+#################################################################################
+### Adding a custom header to a packet and modifying its value with an action ###
+#################################################################################
+
+The approach here is to:
+
+1. Add a custom header called 'doraemon' with a field called 'dorayaki' to the packet 
+creator script send.py, which uses the Python library 'scapy' to create network packets.
+
+2. Add an action to the P4 file, which tells the switch to modify the value 
+of the 'dorayaki' field.
+
+
+### Understand send.py and xterms in mininet ###
+
+The README.md explains how to use xterm in mininet to get terminals on the hosts in
+the mininet network.  In short, to get terminals up for h1 and h3 do:
+
+> xterm h1 h3
+
+We can then use 'send.py' to send a packet from h1 to h3.  In h1's xterm:
+
+> python3 send.py 10.0.3.3 "hello"
+
+(see pod-topo/pod-topo.png to see the IP addresses for each host)
+
+
