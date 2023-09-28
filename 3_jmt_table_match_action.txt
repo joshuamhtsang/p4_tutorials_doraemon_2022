@@ -37,7 +37,12 @@ You will find this the corresponding action and table defined in
     takes the parameters 'dstAddr' and 'port', which are passed from 
     the control plane in the "action_params" dict in "sX-runtime.json".  
     Inside the action, packet fields are modified, such as decrementing 
-    the ttl counter. */
+    the ttl counter. 
+
+    'standard_metadata' is a set of fields in the V1Model and it is 
+    implementation specific, but in this case BMV2 implements the V1Model. 
+    A comprehensive list of the fields can be found in p4-cheat-sheet.pdf.
+    */
 
     action ipv4_forward(macAddr_t dstAddr, egressSpec_t port) {
         standard_metadata.egress_spec = port;

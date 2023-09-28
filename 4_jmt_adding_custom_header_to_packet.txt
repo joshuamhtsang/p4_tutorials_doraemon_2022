@@ -11,7 +11,10 @@ creator script send.py, which uses the Python library 'scapy' to create network 
 of the 'dorayaki' field.
 
 
+
+################################################
 ### Understand send.py and xterms in mininet ###
+################################################
 
 The README.md explains how to use xterm in mininet to get terminals on the hosts in
 the mininet network.  In short, to get terminals up for h1 and h3 do:
@@ -20,8 +23,16 @@ the mininet network.  In short, to get terminals up for h1 and h3 do:
 
 We can then use 'send.py' to send a packet from h1 to h3.  In h1's xterm:
 
-> python3 send.py 10.0.3.3 "hello"
+# python3 send.py 10.0.3.3 "hello"
 
 (see pod-topo/pod-topo.png to see the IP addresses for each host)
+
+
+
+########################################################
+### Adding a 'doraemon' header with field 'dorayaki' ###
+########################################################
+
+
 
 
