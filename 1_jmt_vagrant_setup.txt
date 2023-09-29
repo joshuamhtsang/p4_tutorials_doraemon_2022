@@ -5,10 +5,14 @@
 Follow the instructions in the official README.md
 to install vagrant, virtual box and run:
 
-$ vagrant up
+$ vagrant up --provision
 
-in the vm-ubuntu-20.04/ directory.  Virtual box requires
-AMD-V enable to make sure you enable it in BIOS:
+in the vm-ubuntu-20.04/ directory.  The '--provision' is 
+sometime necesssary to mount the repo files at:
+
+/vagrant/
+
+Virtual box requires AMD-V enable to make sure you enable it in BIOS:
 
 [BIOS splash screen] -> [press F2] -> [MIT settings] ->
 [Frequency Settings] -> [CPU Settings] -> [SVM Mode] -> Enable
