@@ -16,7 +16,7 @@ from scapy.all import (
     )
 
 TYPE_MYDORAEMON = 0x1212
-
+TYPE_IPV4 = 0x0800
 
 class MyDoraemon(Packet):
     name = "MyDoraemon"
@@ -25,6 +25,7 @@ class MyDoraemon(Packet):
     ]
 
 bind_layers(Ether, MyDoraemon, type=TYPE_MYDORAEMON)
+bind_layers(MyDoraemon, IP, pid=TYPE_IPV4)
 
 def get_if():
     ifs=get_if_list()
@@ -49,9 +50,9 @@ def main():
 
     print("sending on interface %s to %s" % (iface, str(addr)))
     pkt =  Ether(src=get_if_hwaddr(iface), dst='ff:ff:ff:ff:ff:ff')
-    pkt = pkt / IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535)) / MyDoraemon(dorayaki=5) / sys.argv[2]
-    pkt.show2()
-    pkt.show()
+    pkt = pkt / MyDoraemon(dorayaki=105) / IP(dst=addr) / TCP(dport=1234, sport=random.randint(49152,65535)) / sys.argv[2]
+    print(pkt.show2())
+    print(pkt.show())
     sendp(pkt, iface=iface, verbose=False)
 
 
