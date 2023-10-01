@@ -2,6 +2,7 @@
 #include <core.p4>
 #include <v1model.p4>
 
+const bit<16> TYPE_MYTUNNEL = 0x1212;
 const bit<16> TYPE_IPV4 = 0x800;
 
 /*************************************************************************
@@ -16,6 +17,10 @@ header ethernet_t {
     macAddr_t dstAddr;
     macAddr_t srcAddr;
     bit<16>   etherType;
+}
+
+header myDoraemon_t {
+    bit<32> dorayaki;
 }
 
 header ipv4_t {
@@ -33,6 +38,20 @@ header ipv4_t {
     ip4Addr_t dstAddr;
 }
 
+header tcp_t {
+    bit<16> srcPort;
+    bit<16> dstPort;
+    bit<32> seqNo;
+    bit<32> ackNo;
+    bit<4>  dataOffset;
+    bit<3>  res;
+    bit<3>  ecn;
+    bit<6>  ctrl;
+    bit<16> window;
+    bit<16> checksum;
+    bit<16> urgentPtr;
+}
+
 struct metadata {
     /* empty */
 }
@@ -40,6 +59,8 @@ struct metadata {
 struct headers {
     ethernet_t   ethernet;
     ipv4_t       ipv4;
+    tcp_t        tcp;
+    myDoraemon_t myDoraemon;
 }
 
 /*************************************************************************
@@ -65,6 +86,16 @@ parser MyParser(packet_in packet,
 
     state parse_ipv4 {
         packet.extract(hdr.ipv4);
+        transition parse_tcp;
+    }
+
+    state parse_tcp {
+        packet.extract(hdr.tcp);
+        transition parse_myDoraemon;
+    }
+
+    state parse_myDoraemon {
+        packet.extrct(hdr.myDoraemon);
         transition accept;
     }
 
@@ -95,6 +126,7 @@ control MyIngress(inout headers hdr,
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
         hdr.ipv4.ttl = hdr.ipv4.ttl - 1;
+        hdr.doraemon.dorayaki = hdr.doraemon.dorayaki + 1;
     }
 
     table ipv4_lpm {
@@ -163,6 +195,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
         packet.emit(hdr.ipv4);
+        packet.emit(hdr.doraemon)
     }
 }
 
