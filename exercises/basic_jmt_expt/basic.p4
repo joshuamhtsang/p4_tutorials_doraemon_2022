@@ -95,7 +95,7 @@ parser MyParser(packet_in packet,
     }
 
     state parse_myDoraemon {
-        packet.extrct(hdr.myDoraemon);
+        packet.extract(hdr.myDoraemon);
         transition accept;
     }
 
@@ -126,7 +126,7 @@ control MyIngress(inout headers hdr,
         hdr.ethernet.srcAddr = hdr.ethernet.dstAddr;
         hdr.ethernet.dstAddr = dstAddr;
         hdr.ipv4.ttl = hdr.ipv4.ttl - 1;
-        hdr.doraemon.dorayaki = hdr.doraemon.dorayaki + 1;
+        hdr.myDoraemon.dorayaki = hdr.myDoraemon.dorayaki + 1;
     }
 
     table ipv4_lpm {
@@ -195,7 +195,8 @@ control MyDeparser(packet_out packet, in headers hdr) {
     apply {
         packet.emit(hdr.ethernet);
         packet.emit(hdr.ipv4);
-        packet.emit(hdr.doraemon)
+        packet.emit(hdr.tcp);
+        packet.emit(hdr.myDoraemon);
     }
 }
 

@@ -46,12 +46,16 @@ def handle_pkt(pkt):
         pkt.show2()
     #    hexdump(pkt)
         sys.stdout.flush()
-    if MyDoraemon in pkt:
+    elif MyDoraemon in pkt:
         print("\ngot a packet with MyDoraemon header!\n")
         pkt.show2()
         pkt.show()
     #    hexdump(pkt)
         sys.stdout.flush()
+    else:
+        print("/nGot a packet but Scapy not sure what it is...")
+        pkt.show()
+
 
 
 def main():
