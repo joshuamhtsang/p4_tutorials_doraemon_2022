@@ -2,6 +2,7 @@
 import os
 import sys
 
+from myDoraemon_header import MyDoraemon
 from scapy.all import (
     TCP,
     FieldLenField,
@@ -43,6 +44,12 @@ def handle_pkt(pkt):
     if TCP in pkt and pkt[TCP].dport == 1234:
         print("got a packet")
         pkt.show2()
+    #    hexdump(pkt)
+        sys.stdout.flush()
+    if MyDoraemon in pkt:
+        print("\ngot a packet with MyDoraemon header!\n")
+        pkt.show2()
+        pkt.show()
     #    hexdump(pkt)
         sys.stdout.flush()
 
