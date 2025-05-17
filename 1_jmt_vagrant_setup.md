@@ -15,14 +15,26 @@ Then in the [./vm-ubuntu-20.04/](./vm-ubuntu-20.04/) directory, run in the termi
 $ vagrant up --provision
 ~~~
 
-The '--provision' flag is 
-sometime necesssary to mount this repo's files to the following directory inside in the guest VM:
+The '--provision' flag is sometime necesssary to mount this repo's files to the following directory inside in the guest VM:
 
 ~~~
 /vagrant/
 ~~~
 
-Virtual box requires AMD-V enable to make sure you enable it in BIOS:
+If you get an error like:
+
+~~~
+==> release: Booting VM...
+There was an error while executing `VBoxManage`, a CLI used by Vagrant
+for controlling VirtualBox. The command and stderr is shown below.
+
+Command: ["startvm", "75070036-35da-4f7c-8d81-12458ead236c", "--type", "gui"]
+
+Stderr: VBoxManage: error: AMD-V is disabled in the BIOS (or by the host OS) (VERR_SVM_DISABLED)
+VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component ConsoleWrap, interface IConsole
+~~~
+
+Then Virtualbox requires AMD-V enables so make sure you enable it in BIOS:
 
 ~~~
 [BIOS splash screen] -> [press F2] -> [MIT settings] ->
