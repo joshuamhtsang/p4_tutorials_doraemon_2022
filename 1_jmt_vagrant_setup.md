@@ -1,14 +1,21 @@
-# Vagrant VM Setup
+# Vagrant and Virtual Box VM Setup
 
 Follow the instructions in the official [README.md](./README.md)
-which suggests installing vagrant and virtual box.  Then run:
+which suggests installing vagrant and virtual box.  The basic instructions are:
+
+[Install Vagrant](https://developer.hashicorp.com/vagrant/install)
+(note you have to manually copy and execute each line for their Ubuntu 24.04 commands...)
+
+[Install Virtualbox](https://www.virtualbox.org/wiki/Linux_Downloads)
+(download *.deb file and run... at time of wiritng I installed Virtualbox 7.1)
+
+Then in the [./vm-ubuntu-20.04/](./vm-ubuntu-20.04/) directory, run in the terminal:
 
 ~~~
 $ vagrant up --provision
 ~~~
 
-
-in the `vm-ubuntu-20.04/` directory.  The '--provision' flag is 
+The '--provision' flag is 
 sometime necesssary to mount this repo's files to the following directory inside in the guest VM:
 
 ~~~
