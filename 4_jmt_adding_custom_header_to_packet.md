@@ -65,7 +65,7 @@ This section of code is very illustrative of what a conventional switch does bef
 
 Firstly: the ethernet mac layer `hdr.ethernet.srcAddr` must now become the present switch's address i.e. whatever the incoming packet has under `hdr.ethernet.dstAddr`.
 
-Secondly: the outgoing packet must have the destination mac address as that contained in the macAddr to port number table.
+Secondly: the outgoing packet must have the destination mac address as that contained in the "macAddr to port number" table.
 
 Thirdly, the time-to-live (ttl) must be decremented.
 
