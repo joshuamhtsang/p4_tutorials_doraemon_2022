@@ -1,18 +1,10 @@
-####################################
-### P4 Tables, Match and Actions ###
-####################################
+# P4 Tables, Match and Actions
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~ Understanding the P4 API ~~~ 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Understanding the P4 API
 
-Fundamentally, P4 exposes an API on the forwarding hardware 
-which a control plane can interact with.  Look inside 
-'pod-topo/sX-runtime.json' - you will see
-control plane definitions of the match-action tables and their 
-entries/rows.  For example, consider this match-action entry 
-in the table 'MyIngress.ipv4_forward':
+Fundamentally, P4 exposes an API on the forwarding hardware which a control plane can interact with.  Look inside the JSON config files for each switch `./exercises/basic/pod-topo/sX-runtime.json` [here](./exercises/basic/pod-topo/) - you will see control plane definitions of the match-action tables and their entries/rows.  For example, consider this match-action entry in the table `MyIngress.ipv4_forward`:
 
+~~~
 "table_entries": [
     ...
     {
@@ -28,10 +20,12 @@ in the table 'MyIngress.ipv4_forward':
     },
     ...
 ]
+~~~
 
 You will find this the corresponding action and table defined in 
-"basic.p4" as:
+[basic.p4](./exercises/basic/basic.p4) as:
 
+~~~
     /* Definition of action "ipv4_forward". 
     It is akin to a function definition.  Note how this action 
     takes the parameters 'dstAddr' and 'port', which are passed from 
@@ -70,9 +64,9 @@ You will find this the corresponding action and table defined in
         size = 1024;
         default_action = drop();
     }
+~~~
 
-
-So you see that the *.p4 file defines tables, match criteria and 
+So you see that the `*.p4` file defines tables, match criteria and 
 actions and exposes an API on the forwarding device to the control plane. 
 The control plane can then interact with this API to populate the 
 match-action tables within the device.

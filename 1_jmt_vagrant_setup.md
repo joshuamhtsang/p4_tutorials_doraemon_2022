@@ -1,47 +1,57 @@
-########################
-### Vagrant VM Setup ###
-########################
+# Vagrant VM Setup
 
-Follow the instructions in the official README.md
-to install vagrant, virtual box and run:
+Follow the instructions in the official [README.md](./README.md)
+which suggests installing vagrant and virtual box.  Then run:
 
+~~~
 $ vagrant up --provision
+~~~
 
-in the vm-ubuntu-20.04/ directory.  The '--provision' is 
-sometime necesssary to mount the repo files at:
 
+in the `vm-ubuntu-20.04/` directory.  The '--provision' flag is 
+sometime necesssary to mount this repo's files to the following directory inside in the guest VM:
+
+~~~
 /vagrant/
+~~~
 
 Virtual box requires AMD-V enable to make sure you enable it in BIOS:
 
+~~~
 [BIOS splash screen] -> [press F2] -> [MIT settings] ->
 [Frequency Settings] -> [CPU Settings] -> [SVM Mode] -> Enable
+~~~
 
 A guest OS gui should appear at the end.  Login with:
 
+~~~
 User: p4
 PW: p4
+~~~
 
-I like to change some things in the Vagrantfile:
+I like to change some things in the Vagrantfile to make code/script editing workflow better (essentially, to enable 'edit on host, run in VM'):
 
-1.  By default, Vagrant mounts the directory containing
+1. By default, Vagrant mounts the directory containing
 the Vagrantfile to /vagrant/ directory inside the guest
 VM.  However, P4 tutorials disable this in their
-Vagrantfile.  Re-enable mounting and point to root of
-'tutorial_jmt' repo'.  Change the line inside
+Vagrantfile.  Do the following to re-enable mounting and point to root of
+this repo.  Change the line inside
 './vm-ubuntu-20.04/Vagrantfile' from:
-
+~~~
     config.vm.synced_folder '.', '/vagrant', disabled: true
-
+~~~
 to:
-
+~~~
     config.vm.synced_folder './..', '/vagrant', disabled: false
+~~~
 
 Inside the guest OS, if you 'cd' to:
 
+~~~
 $ cd /vagrant/
+~~~
 
-You should see the 'exercises/' directory.
+You should now see the `exercises/` directory.
 
 2.  If you try to edit files inside the the guest OS, you get
 'Permission denied'.  So do the file editing on the host machine,
