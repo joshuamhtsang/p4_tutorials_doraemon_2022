@@ -33,11 +33,16 @@ $ python3 send.py 10.0.3.3 "hello"
 You can look inside `pod-topo/pod-topo.png` to see the IP addresses for each host in this demo topology.
 
 
-# Create the network packet
+# Create the network packet with a new Doraemon layer
 
-# Adding a 'doraemon' layer to a scapy packet with field 'dorayaki' 
+The pertinent files are:
 
-Done.
+1. [myDoraemon_header.py](./exercises/basic_jmt_expt/myDoraemon_header.py): This file defines the Doraemon layer of the packet with the integer dorayaki value.  Uses the `scapy` `Packet` class.
+2. [send.py](./exercises/basic_jmt_expt/send.py): This creates the actual packets with the Doraemon layer stacked after the TCP layer (OSI layer 4) and before the payload.  It uses `scapy`'s convenient `/` operator to build and order the layers.
+
+# Running the demonstration
+
+<add detail here>
 
 
 
