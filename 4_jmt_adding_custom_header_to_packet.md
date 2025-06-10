@@ -43,7 +43,7 @@ The pertinent files are:
 
 ## Modifying the match-actions to increment the dorayaki counter by +1 when ingressed
 
-The pertient file is [basic.p4](./exercises/basic_jmt_expt/basic.p4). There are a few basic sections to the p4 files and each requires modification  to process the doraemon layer:
+The pertinent file is [basic.p4](./exercises/basic_jmt_expt/basic.p4). There are a few basic sections to the p4 files and each requires modification  to process the doraemon layer:
 
 1. Define the expected headers in the received packet:  Add the `myDoraemon` layer definition and the expected fields in this layer i.e. `bit<32> dorayaki` to the header of the packet.
 
