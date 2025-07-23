@@ -15,6 +15,8 @@ Then in the [./vm-ubuntu-20.04/](./vm-ubuntu-20.04/) directory, run in the termi
 $ vagrant up --provision
 ~~~
 
+Update 2025-07-23: Now WAIT! It takes some time before the VM is all setup and until it is, using the username 'p4' and password 'p4' will not work!
+
 The '--provision' flag is sometime necesssary to mount this repo's files to the following directory inside in the guest VM:
 
 ~~~
